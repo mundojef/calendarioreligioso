@@ -263,7 +263,13 @@
             <div class="highlight" id="mainHighlight">
                 <h3>Antes de pegar seu calendário religioso GRATUITO</h3>
                 <p>Posso pedir um favorzinho? 💝<br>
-                Estou começando minha Lojinha Milagrosa do Senhor Jesus e cada visitinha faz TODA a diferença para mim!</span>
+                Estou começando minha Lojinha Milagrosa do Senhor Jesus e cada visitinha faz TODA a diferença para mim!</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Seu clique não custa nada, mas vale TUDO para mim! 🥺</span>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-clock"></i>
@@ -319,18 +325,13 @@
         document.getElementById('shopeeBtn').addEventListener('click', function() {
             localStorage.setItem('shopeeVisited', 'true');
             
-            // Simular retorno após alguns segundos (para demonstração)
+            // Após 3 segundos, redirecionar automaticamente para o calendário
             setTimeout(function() {
-                document.body.classList.add('visited-shopee');
-                document.getElementById('mainHighlight').innerHTML = `
-                    <h3>Obrigado por visitar minha loja! ✨</h3>
-                    <p>Agora você pode pegar seu calendário religioso GRATUITO! 🎁<br>
-                    Que Deus abençoe sua generosidade! 🙏</p>
-                `;
+                window.location.href = 'https://arteefotomontagens.com/molduras-digitais-gratis_religiosas.html';
             }, 3000);
         });
         
-        // Timer countdown - mudado para 60 segundos
+        // Timer countdown - 60 segundos
         let timeLeft = 60;
         const timerElement = document.getElementById('timer');
         
@@ -358,73 +359,6 @@
                 document.getElementById('mainHighlight').innerHTML = `
                     <h3>Bem-vindo de volta! ✨</h3>
                     <p>Obrigado por visitar minha Lojinha Milagrosa! Agora pegue seu calendário GRATUITO! 🎁<br>
-                    Que Deus abençoe você! 🙏</p>
-                `;
-            }
-        });
-        
-        // Cada visita me ajuda a crescer no algoritmo da plataforma. Você não precisa comprar nada, só sua presença já é um presente! ❤️"
-            </div>
-            
-            <p class="footer-text">
-                <strong>Como funciona:</strong><br>
-                ➡️ Clique no botão acima<br>
-                ➡️ Dê uma olhadinha rápida na loja<br>
-                ➡️ Volte aqui e pegue seu calendário de graça!<br><br>
-                <em>Depois você volta automaticamente para personalizar e baixar seu calendário religioso gratuitamente! Prometo que vale a pena! 🙏✨</em>
-            </p>
-        </div>
-    </div>
-
-    <script>
-        // Detectar quando o usuário volta da Shopee
-        let shopeeVisited = localStorage.getItem('shopeeVisited');
-        
-        if (shopeeVisited) {
-            document.body.classList.add('visited-shopee');
-            document.getElementById('mainHighlight').innerHTML = `
-                <h3>Obrigado por visitar minha loja! ✨</h3>
-                <p>Agora você pode pegar seu calendário religioso GRATUITO! 🎁<br>
-                Que Deus abençoe sua generosidade! 🙏</p>
-            `;
-        }
-        
-        // Marcar quando clica no botão da Shopee
-        document.getElementById('shopeeBtn').addEventListener('click', function() {
-            localStorage.setItem('shopeeVisited', 'true');
-            
-            // Simular retorno após alguns segundos (para demonstração)
-            setTimeout(function() {
-                document.body.classList.add('visited-shopee');
-                document.getElementById('mainHighlight').innerHTML = `
-                    <h3>Obrigado por visitar minha loja! ✨</h3>
-                    <p>Agora você pode pegar seu calendário religioso GRATUITO! 🎁<br>
-                    Que Deus abençoe sua generosidade! 🙏</p>
-                `;
-            }, 3000);
-        });
-        
-        // Timer countdown
-        let timeLeft = 30;
-        const timerElement = document.getElementById('timer');
-        
-        const countdown = setInterval(function() {
-            timeLeft--;
-            timerElement.textContent = timeLeft + ' segundos';
-            
-            if (timeLeft <= 0) {
-                timerElement.textContent = 'Tempo para ajudar! 💝';
-                clearInterval(countdown);
-            }
-        }, 1000);
-        
-        // Efeito de foco quando a página ganha foco (usuário volta)
-        window.addEventListener('focus', function() {
-            if (localStorage.getItem('shopeeVisited')) {
-                document.body.classList.add('visited-shopee');
-                document.getElementById('mainHighlight').innerHTML = `
-                    <h3>Bem-vindo de volta! ✨</h3>
-                    <p>Obrigado por visitar minha loja! Agora pegue seu calendário GRATUITO! 🎁<br>
                     Que Deus abençoe você! 🙏</p>
                 `;
             }
