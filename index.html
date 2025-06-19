@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendários Religiosos Gratuitos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FF6B6B, #4ECDC4);
+        }
+        
+        .religious-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .icon-cross { color: #8B4513; }
+        .icon-heart { color: #FF6B6B; }
+        .icon-dove { color: #87CEEB; }
+        .icon-star { color: #FFD700; }
+        
+        .title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #FFD700 0%, #FFA500 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .highlight::before {
+            content: '🙏';
+            font-size: 2em;
+            position: absolute;
+            top: -10px;
+            right: 15px;
+        }
+        
+        .highlight h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .highlight p {
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        
+        .features {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        
+        .feature-item i {
+            color: #27ae60;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: none;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+        }
+        
+        .testimonial {
+            background: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+        
+        .countdown {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .countdown-timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .footer-text {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .show-calendar-btn {
+            display: inline-block;
+        }
+        
+        .visited-shopee .btn-primary {
+            display: none;
+        }
+        
+        .visited-shopee .btn-secondary {
+            display: inline-block;
+        }
+        
+        .visited-shopee .highlight {
+            background: linear-gradient(120deg, #4ECDC4 0%, #44A08D 100%);
+        }
+        
+        .visited-shopee .highlight::before {
+            content: '✨';
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="religious-icons">
+                <i class="fas fa-cross icon-cross"></i>
+                <i class="fas fa-heart icon-heart"></i>
+                <i class="fas fa-dove icon-dove"></i>
+                <i class="fas fa-star icon-star"></i>
+            </div>
+            
+            <h1 class="title">🙏 UM MINUTO DA SUA ATENÇÃO</h1>
+            
+            <p class="subtitle">Olá! Sou uma pessoa comum como você, tentando construir algo especial...</p>
+            
+            <div class="highlight" id="mainHighlight">
+                <h3>Antes de pegar seu calendário religioso GRATUITO</h3>
+                <p>Posso pedir um favorzinho? 💝<br>
+                Estou começando minha Lojinha Milagrosa do Senhor Jesus e cada visitinha faz TODA a diferença para mim!</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-clock"></i>
+                    <span>São só 30 segundinhos que podem mudar minha vida</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-gift"></i>
+                    <span>Calendário religioso 100% gratuito depois!</span>
+                </div>
+            </div>
+            
+            <div class="countdown">
+                <p><strong>⏰ Tempo para ajudar:</strong></p>
+                <div class="countdown-timer" id="timer">60 segundos</div>
+            </div>
+            
+            <a href="https://s.shopee.com.br/2qIwCwKK36" target="_blank" class="btn-primary pulse" id="shopeeBtn">
+                <i class="fas fa-shopping-cart"></i> VISITAR LOJINHA MILAGROSA
+            </a>
+            
+            <a href="https://arteefotomontagens.com/molduras-digitais-gratis_religiosas.html" target="_blank" class="btn-secondary" id="calendarBtn">
+                <i class="fas fa-calendar-alt"></i> PEGAR MEU CALENDÁRIO GRÁTIS
+            </a>
+            
+            <div class="testimonial">
+                "Cada visita me ajuda a crescer no algoritmo da plataforma. Você não precisa comprar nada, só sua presença já é um presente! ❤️"
+            </div>
+            
+            <p class="footer-text">
+                <strong>Como funciona:</strong><br>
+                ➡️ Clique no botão acima<br>
+                ➡️ Dê uma olhadinha rápida na loja<br>
+                ➡️ Volte aqui e pegue seu calendário de graça!<br><br>
+                <em>Depois você volta automaticamente para personalizar e baixar seu calendário religioso gratuitamente! Prometo que vale a pena! 🙏✨</em>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Detectar quando o usuário volta da loja
+        let shopeeVisited = localStorage.getItem('shopeeVisited');
+        
+        if (shopeeVisited) {
+            document.body.classList.add('visited-shopee');
+            document.getElementById('mainHighlight').innerHTML = `
+                <h3>Obrigado por visitar minha loja! ✨</h3>
+                <p>Agora você pode pegar seu calendário religioso GRATUITO! 🎁<br>
+                Que Deus abençoe sua generosidade! 🙏</p>
+            `;
+        }
+        
+        // Marcar quando clica no botão da loja
+        document.getElementById('shopeeBtn').addEventListener('click', function() {
+            localStorage.setItem('shopeeVisited', 'true');
+            
+            // Simular retorno após alguns segundos (para demonstração)
+            setTimeout(function() {
+                document.body.classList.add('visited-shopee');
+                document.getElementById('mainHighlight').innerHTML = `
+                    <h3>Obrigado por visitar minha loja! ✨</h3>
+                    <p>Agora você pode pegar seu calendário religioso GRATUITO! 🎁<br>
+                    Que Deus abençoe sua generosidade! 🙏</p>
+                `;
+            }, 3000);
+        });
+        
+        // Timer countdown - mudado para 60 segundos
+        let timeLeft = 60;
+        const timerElement = document.getElementById('timer');
+        
+        const countdown = setInterval(function() {
+            timeLeft--;
+            timerElement.textContent = timeLeft + ' segundos';
+            
+            if (timeLeft <= 0) {
+                // Após 60 segundos, mostrar botão do calendário
+                document.body.classList.add('visited-shopee');
+                document.getElementById('mainHighlight').innerHTML = `
+                    <h3>Tempo esgotado! Mas tudo bem... ✨</h3>
+                    <p>Você ainda pode pegar seu calendário religioso GRATUITO! 🎁<br>
+                    Que Deus abençoe você mesmo assim! 🙏</p>
+                `;
+                timerElement.textContent = 'Calendário liberado! 💝';
+                clearInterval(countdown);
+            }
+        }, 1000);
+        
+        // Efeito de foco quando a página ganha foco (usuário volta)
+        window.addEventListener('focus', function() {
+            if (localStorage.getItem('shopeeVisited')) {
+                document.body.classList.add('visited-shopee');
+                document.getElementById('mainHighlight').innerHTML = `
+                    <h3>Bem-vindo de volta! ✨</h3>
+                    <p>Obrigado por visitar minha Lojinha Milagrosa! Agora pegue seu calendário GRATUITO! 🎁<br>
+                    Que Deus abençoe você! 🙏</p>
+                `;
+            }
+        });
+        
+        // Cada visita me ajuda a crescer no algoritmo da plataforma. Você não precisa comprar nada, só sua presença já é um presente! ❤️"
+            </div>
+            
+            <p class="footer-text">
+                <strong>Como funciona:</strong><br>
+                ➡️ Clique no botão acima<br>
+                ➡️ Dê uma olhadinha rápida na loja<br>
+                ➡️ Volte aqui e pegue seu calendário de graça!<br><br>
+                <em>Depois você volta automaticamente para personalizar e baixar seu calendário religioso gratuitamente! Prometo que vale a pena! 🙏✨</em>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Detectar quando o usuário volta da Shopee
+        let shopeeVisited = localStorage.getItem('shopeeVisited');
+        
+        if (shopeeVisited) {
+            document.body.classList.add('visited-shopee');
+            document.getElementById('mainHighlight').innerHTML = `
+                <h3>Obrigado por visitar minha loja! ✨</h3>
+                <p>Agora você pode pegar seu calendário religioso GRATUITO! 🎁<br>
+                Que Deus abençoe sua generosidade! 🙏</p>
+            `;
+        }
+        
+        // Marcar quando clica no botão da Shopee
+        document.getElementById('shopeeBtn').addEventListener('click', function() {
+            localStorage.setItem('shopeeVisited', 'true');
+            
+            // Simular retorno após alguns segundos (para demonstração)
+            setTimeout(function() {
+                document.body.classList.add('visited-shopee');
+                document.getElementById('mainHighlight').innerHTML = `
+                    <h3>Obrigado por visitar minha loja! ✨</h3>
+                    <p>Agora você pode pegar seu calendário religioso GRATUITO! 🎁<br>
+                    Que Deus abençoe sua generosidade! 🙏</p>
+                `;
+            }, 3000);
+        });
+        
+        // Timer countdown
+        let timeLeft = 30;
+        const timerElement = document.getElementById('timer');
+        
+        const countdown = setInterval(function() {
+            timeLeft--;
+            timerElement.textContent = timeLeft + ' segundos';
+            
+            if (timeLeft <= 0) {
+                timerElement.textContent = 'Tempo para ajudar! 💝';
+                clearInterval(countdown);
+            }
+        }, 1000);
+        
+        // Efeito de foco quando a página ganha foco (usuário volta)
+        window.addEventListener('focus', function() {
+            if (localStorage.getItem('shopeeVisited')) {
+                document.body.classList.add('visited-shopee');
+                document.getElementById('mainHighlight').innerHTML = `
+                    <h3>Bem-vindo de volta! ✨</h3>
+                    <p>Obrigado por visitar minha loja! Agora pegue seu calendário GRATUITO! 🎁<br>
+                    Que Deus abençoe você! 🙏</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
